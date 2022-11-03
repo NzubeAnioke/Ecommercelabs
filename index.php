@@ -35,6 +35,15 @@
 						</li>';
 		}
 	}
+	if (isset( $_SESSION["checkrole"])) {
+		if ($_SESSION['checkrole'] == 1) {
+			$catview = '<li>
+							<a href="./admin/category.php">
+								Category
+							</a>
+						</li>';
+		}
+	}
 ?>
 
 <!DOCTYPE html>
@@ -55,6 +64,10 @@
 //check if adminview has been set
 		if (isset($adminview)) {
 			echo $adminview;
+		}
+		//check if adminview has been set
+		if (isset($catview)) {
+			echo $catview;
 		}
 		?>
 	</ul>
