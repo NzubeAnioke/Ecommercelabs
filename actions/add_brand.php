@@ -1,5 +1,5 @@
 <?php
-
+//New comment here
 include ('../controllers/product_controller.php');
 // check if button is clicked
 if(isset($_POST["brand"])){
