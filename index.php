@@ -17,6 +17,11 @@
 								Logout
 							</a>
 						</li>';
+			$add_product = '<li>
+						<a href="./actions/add_product.php">
+							Add Product
+						</a>
+					</li>';
 		}
 	}
 	else 
@@ -61,6 +66,7 @@
 		</li>
 		<?php
 			echo $logmenu;
+			echo $add_product;
 //check if adminview has been set
 		if (isset($adminview)) {
 			echo $adminview;

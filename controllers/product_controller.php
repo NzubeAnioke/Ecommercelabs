@@ -2,7 +2,7 @@
 //connect to the user account class
 include("../classes/product_class.php");
 
-//CATEGORIES
+//BRANDS
 //--INSERT--//
 function insertbrand($brand){
     $newdata = new Addbrand();
@@ -40,4 +40,30 @@ function getCAT(){
 function updateCAT($id,$cat){
     $newdata = new AddCAT();
     return $newdata->updateCAT($id,$cat);
+}
+
+
+//PRODUCTS
+//--INSERT--//
+function insertproduct($product_cat,$product_brand,$product_title,$product_price,$product_desc,$product_image,$product_keywords){
+    $newdata = new AddCAT();
+     return $newdata->addproduct($product_cat,$product_brand,$product_title,$product_price,$product_desc,$product_image,$product_keywords);
+}
+
+
+//--SELECT--//
+function getproducts(){
+    $newdata = new AddCAT();
+    return $newdata->selectproducts();  
+}
+
+function getproduct($id){
+    $newdata = new AddCAT();
+    return $newdata->selectproduct($id);  
+}
+
+//--UPDATE--//
+function updateproduct($product_id, $product_cat,$product_brand,$product_title,$product_price,$product_desc,$product_image,$product_keywords){
+    $newdata = new AddCAT();
+    return $newdata->updateproduct($product_id, $product_cat,$product_brand,$product_title,$product_price,$product_desc,$product_image,$product_keywords);
 }
