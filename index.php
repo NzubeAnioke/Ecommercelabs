@@ -18,7 +18,7 @@
 							</a>
 						</li>';
 			$add_product = '<li>
-						<a href="./actions/add_product.php">
+						<a href="./view/product.php">
 							Add Product
 						</a>
 					</li>';
