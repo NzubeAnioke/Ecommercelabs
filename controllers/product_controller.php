@@ -67,3 +67,9 @@ function updateproduct($product_id, $product_cat,$product_brand,$product_title,$
     $newdata = new AddCAT();
     return $newdata->updateproduct($product_id, $product_cat,$product_brand,$product_title,$product_price,$product_desc,$product_image,$product_keywords);
 }
+
+//Product search
+function searchproduct($product_keywords){
+    $newdata = new AddCAT();
+    return $newdata-> searchproduct($product_keywords);  
+}

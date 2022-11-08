@@ -43,6 +43,7 @@ class AddCAT extends db_connection{
     function selectcat(){
 		$sql="SELECT * FROM `categories` ";
         return $this->db_fetch_all($sql);
+        
 
 	}
 
@@ -68,11 +69,12 @@ class AddCAT extends db_connection{
      function selectproducts(){
          $sql=" SELECT * FROM `products` ";
         return $this->db_fetch_all($sql);
+      
      }
 
      function selectproduct($id){
         $sql=" SELECT * FROM `products` WHERE `product_id`='$id'";
-       return $this->db_fetch_all($sql);
+       return $this->db_fetch_one($sql);
 
     }
  
@@ -85,6 +87,12 @@ class AddCAT extends db_connection{
          return $this->db_query($sql);
  
      }
+     //PRODUCT SEARCH
+     function searchproduct($searchdata){
+     $sql = "SELECT * FROM `products` WHERE `product_keywords` LIKE '%$searchdata%' ";
+     return $this->db_fetch_all($sql);
+     }
 }
+
 ?>
 

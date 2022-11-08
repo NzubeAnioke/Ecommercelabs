@@ -25,6 +25,7 @@ include ('../controllers/product_controller.php');
 $data = getCAT();   
 $Branddata = getBrands();
 
+
 ?>
 
 <!doctype html>
