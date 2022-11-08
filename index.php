@@ -22,6 +22,16 @@
 							Add Product
 						</a>
 					</li>';
+			$allproducts = '<li>
+					<a href="./view/all_product.php">
+						All Products
+					</a>
+				</li>';
+			$search = '<li>
+						<a href="./view/all_product.php">
+							Search
+						</a>
+					</li>';
 		}
 	}
 	else 
@@ -67,6 +77,8 @@
 		<?php
 			echo $logmenu;
 			echo $add_product;
+			echo $allproducts;
+			echo $search;
 //check if adminview has been set
 		if (isset($adminview)) {
 			echo $adminview;

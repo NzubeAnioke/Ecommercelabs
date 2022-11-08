@@ -89,7 +89,7 @@ class AddCAT extends db_connection{
      }
      //PRODUCT SEARCH
      function searchproduct($searchdata){
-     $sql = "SELECT * FROM `products` WHERE `product_keywords` LIKE '%$searchdata%' ";
+     $sql = "SELECT * FROM `products` WHERE `product_title` LIKE '%$searchdata%' ";
      return $this->db_fetch_all($sql);
      }
 }
