@@ -22,6 +22,15 @@
 							Add Product
 						</a>
 					</li>';
+				}
+			}
+			else 
+			$logmenu = '<li>
+			<a href="./login/login.php">
+			Login
+			</a>
+			</li>';
+			
 			$allproducts = '<li>
 					<a href="./view/all_product.php">
 						All Products
@@ -32,14 +41,6 @@
 							Search
 						</a>
 					</li>';
-		}
-	}
-	else 
-	$logmenu = '<li>
-					<a href="./login/login.php">
-						Login
-					</a>
-				</li>';
 
 	if (isset( $_SESSION["checkrole"])) {
 		if ($_SESSION['checkrole'] == 1) {
@@ -76,7 +77,10 @@
 		</li>
 		<?php
 			echo $logmenu;
-			echo $add_product;
+
+			if(isset($add_product))
+				echo $add_product;
+
 			echo $allproducts;
 			echo $search;
 //check if adminview has been set
