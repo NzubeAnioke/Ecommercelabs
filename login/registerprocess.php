@@ -26,10 +26,11 @@ $password = base64_encode($password);
     $result = insertCustomer($fullname, $email, $password ,$country , $city, $number);
     if ($result) {
         echo "Inserted succesfully";
-        header("location: login.php");
+        header("location: ../index.php");
     } else {
         echo "Insertion failed";
     }
 }
+
     
 ?>
