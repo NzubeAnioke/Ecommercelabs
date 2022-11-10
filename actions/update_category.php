@@ -1,6 +1,6 @@
 <?php
 
-include ('../controllers/product_controller.php');
+include dirname(__FILE__).'/../controllers/product_controller.php';
 // check if button is clicked
 if(isset($_POST["update_cat"])){
     // grab form data

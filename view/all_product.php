@@ -1,8 +1,12 @@
 
 <?php
+// Start session
+session_start();
     
-    include ('../controllers/product_controller.php');
+    include dirname(__FILE__)."/../controllers/product_controller.php";
+    require dirname(__FILE__)."/../functions/functions.php";
     $allp = getproducts();
+    $ip = getIPAddress();
 
 ?>
 
@@ -46,6 +50,7 @@
       <th scope="col">Price</th>
       <th scope="col">image</th>
       <th scope="col">View Product</th>
+      <th scope="col">Add</th>
     </tr>
   </thead>  
   <tbody>
@@ -58,15 +63,27 @@
                 <tr>
                 <td>' .$value["product_title"] . '</td>
                 <td>' .$value["product_price"] . '</td>
-                <td>' .$value["product_image"] . '</td>
+                <td><img src="' .$value["product_image"] . '" alt=""></td>
                 <td>  <button><a href="single_product.php?id=' .$value["product_id"] . '">View</a></button> </td>
-                <td> <button>Add to cart</button> </td>
+              <td>
+                <form class="form-inline" method="POST" action="../actions/add_to_cart.php">
+                  <input class="form-control mr-sm-2" type="hidden" value="'.$ip.'" name="ip">
+                  <input class="form-control mr-sm-2" type="hidden" value="'. $_SESSION["customer_id"].'" name="customer_id">
+                  <input class="form-control mr-sm-2" type="hidden" name="product_id" value =" '.$value["product_id"].'">
+                  <input class="form-control mr-sm-2" name="quantity" type="number" placeholder="Quantity" aria-label="Quantity">
+                  <input type="submit" name="submit" value="Add to Cart">
+                </form>
+              </td>
+                <br>
+
+                
               </tr>               ' ; 
             }
 
             ?>  
-    
   </tbody>
+ 
+
 </table>
 
       

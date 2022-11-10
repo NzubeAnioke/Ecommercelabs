@@ -39,7 +39,7 @@ $Branddata = getBrands();
 </head>
 
 <body class="container">
-    <form method="POST" action="../actions/add_product.php">
+    <form method="POST" action="../actions/add_product.php" enctype="multipart/form-data">
                 <label for="CATEGORIES">Choose a product category:</label>
             <select name="product_cat" id="cat_name">
             <option value=""> </option>
@@ -80,7 +80,7 @@ $Branddata = getBrands();
 
         <div class="form-outline mb-4">
             <label class="form-label" for="form3Example3cg">Upload product image</label>
-            <input type="text" id="form3Example3cg" class="form-control form-control-lg" name="product_image"  />
+            <input type="file" id="form3Example3cg" class="form-control form-control-lg" name="product_image"  />
         </div>
 
         <div class="form-outline mb-4">

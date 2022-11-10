@@ -1,6 +1,6 @@
 <?php
 //connect to the user account class
-include("../classes/product_class.php");
+include dirname(__FILE__)."/../classes/product_class.php";
 
 //BRANDS
 //--INSERT--//

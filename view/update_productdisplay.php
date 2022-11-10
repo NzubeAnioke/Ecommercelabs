@@ -10,11 +10,11 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-light bg-light justify-content-between">
+    <nav class="navbar navbar-light bg-light justify-content-between"></nav>
 
     
 
-<h2> PRODUCTS </h2>
+<h2> PRODUCTS </h2><br>
 <div class="container">
 <table class="table table-dark">
   <thead>
@@ -40,5 +40,6 @@
     ?>  
   </tbody>
 </table>
+</div>
 </body>
 </html>

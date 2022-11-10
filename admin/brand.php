@@ -59,7 +59,7 @@ if (isset($_SESSION["brand_upt"])) {
         <th scope="col">Update action</th>
       </tr>
       <?php
-        include ("../controllers/product_controller.php");
+        include dirname(__FILE__)."/../controllers/product_controller.php";
         $data = getBrands();
         foreach($data as $key => $value) {
             echo '<tr>

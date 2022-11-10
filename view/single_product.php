@@ -1,6 +1,12 @@
 <?php
+// Start session
+session_start();
+    
+require ('../functions/functions.php');
 include ('../controllers/product_controller.php');
-$data = getproduct($_GET['id']);   
+
+$data = getproduct($_GET['id']); 
+$ip = getIPAddress();  
 ?>
 
 <!DOCTYPE html>
@@ -43,7 +49,15 @@ $data = getproduct($_GET['id']);
                 <td>'.$data["product_desc"] .'</td>
                 <td>'.$data["product_image"] .'</td>
                 <td>'.$data["product_keywords"] .'</td>
-                <td> <button>Add to cart</button> </td>
+                <td> 
+                <form class="form-inline" method="POST" action="../actions/add_to_cart.php">
+                <input class="form-control mr-sm-2" type="hidden" value="'.$ip.'" name="ip">
+                <input class="form-control mr-sm-2" type="hidden" value="'. $_SESSION["customer_id"].'" name="customer_id">
+                <input class="form-control mr-sm-2" type="hidden" name="product_id" value =" '.$data["product_id"].'">
+                <input class="form-control mr-sm-2" name="quantity" type="number" placeholder="Quantity" aria-label="Quantity">
+                <input type="submit" name="submit" value="Add to Cart">
+              </form>
+                </td>
               </tr>             ' ; 
     
 

@@ -41,6 +41,7 @@ if (isset($_POST["login"])) {
       echo '<script>alert("Login Successful")</script>';
       session_start();
       $_SESSION["logged"] = true;
+      $_SESSION["customer_id"] = $query["customer_id"];
      
       if ($query["user_role"] == 1) 
         $_SESSION["checkrole"] = 1; //setting user role session for admin

@@ -1,6 +1,6 @@
 <?php
 //connect to the user account class
-include("../classes/customer_class.php");
+include dirname(__FILE__)."/../classes/customer_class.php";
 
 //sanitize data
 
@@ -27,7 +27,7 @@ function Checklogin ($email, $password){
     $query= $newdata-> checklogin ($email, $password);
     return $query;
     if(!empty($query)) 
-        return true;
+        return $query;
     else
         return false;
     }

@@ -1,6 +1,6 @@
 <?php
 //contact phone entity
-require('../settings/db_class.php');
+require dirname(__FILE__).'/../settings/db_class.php';
 
 /**
  * 

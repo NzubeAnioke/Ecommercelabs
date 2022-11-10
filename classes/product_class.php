@@ -1,6 +1,6 @@
 <?php
 
-require('../settings/db_class.php');
+require dirname(__FILE__).'/../settings/db_class.php';
 
 /**
  * 
@@ -93,6 +93,8 @@ class AddCAT extends db_connection{
      return $this->db_fetch_all($sql);
      }
 }
+
+
 
 ?>
 

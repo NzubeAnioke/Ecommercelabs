@@ -1,5 +1,7 @@
 <?php
 	session_start();
+	include "./controllers/cart_controller.php";
+	$items = viewCustomerItems($_SESSION["customer_id"]);
 
 	// If user clicks logout
 	if (isset($_GET["logout"])) {
@@ -20,6 +22,11 @@
 			$add_product = '<li>
 						<a href="./view/product.php">
 							Add Product
+						</a>
+					</li>';
+			$cart = '<li>
+						<a href="./view/cart.php">
+							Cart '."(".$items["COUNT(*)"].")".' 
 						</a>
 					</li>';
 				}
@@ -90,6 +97,9 @@
 		//check if adminview has been set
 		if (isset($catview)) {
 			echo $catview;
+		}
+		if (isset($cart)) {
+			echo $cart;
 		}
 		?>
 	</ul>
