@@ -3,7 +3,8 @@
     include dirname(__FILE__)."/../controllers/cart_controller.php";
     require dirname(__FILE__)."/../functions/functions.php";
     $allp = viewCustomercart($_SESSION["customer_id"]);
-    $ip = getIPAddress();  
+    $ip = getIPAddress(); 
+    $total = 0; 
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +25,7 @@
       <button type="button" onclick="window.location.href='all_product.php'" class="btn btn-warning">CONTINUE SHOPPING</button><br>
       <button type="button" onclick="window.location.href='../index.php'" class="btn btn-success">PROCEED TO PAYMENT</button>
       <header id="header" class="fixed-top d-flex align-items-center header-transparent">
-          <div class="container d-flex align-items-center">
+          <div class="container d-flex align-items-center"></div>
               </header>
         </nav>
 
@@ -48,34 +49,45 @@
   <tbody>
   <?php
             foreach($allp as $key => $value) {
+                $total = $total + ($value["qty"] * $value["product_price"]);
                 echo '
                 <tr>
                 <td>' .$value["product_title"] . '</td>
                 <td>' .$value["product_price"] . '</td>
-                <td><img src="' .$value["qty"] . '" alt=""></td>
+                <td>' .$value["qty"] . '</td>
+              
                 <td>'. $value["qty"] * $value["product_price"] .' </td>
               <td>
-                <form class="form-inline" method="POST" action="">
+                <form class="form-inline" method="POST" action="../actions/manage_quantity_cart.php">
                   <input class="form-control mr-sm-2" type="hidden" value="'.$ip.'" name="ip">
                   <input class="form-control mr-sm-2" type="hidden" value="'. $_SESSION["customer_id"].'" name="customer_id">
                   <input class="form-control mr-sm-2" type="hidden" name="product_id" value =" '.$value["product_id"].'">
                   <input class="form-control mr-sm-2" name="quantity" type="number" placeholder="Quantity" aria-label="Quantity">
-                  <input type="submit" name="submit" value="Update Quantity">
+                  <input type="submit" name="update_qty" value="Update Quantity">
                 </form>
               </td>
               <td>
-              <form class="form-inline" method="POST" action="">
+              <form class="form-inline" method="POST" action="../actions/remove_from_cart.php">
                   <input class="form-control mr-sm-2" type="hidden" value="'. $_SESSION["customer_id"].'" name="customer_id">
                   <input class="form-control mr-sm-2" type="hidden" name="product_id" value =" '.$value["product_id"].'">
                   <input type="submit" name="submit" value="Remove">
                 </form>
               </td>
-                <br>
-
-                
+               <br>     
               </tr>               ' ; 
+
+              
             }
 
-            ?>
+            ?>  
+  </tbody>
+</table> 
+<p>
+  Sub total: <?php echo $total; ?>
+</p>
+<button type="button" onclick="window.location.href='payment.php' "class="btn btn-success">Proceed to Payment </button><br> 
+
 </body>
+
+
 </html>
