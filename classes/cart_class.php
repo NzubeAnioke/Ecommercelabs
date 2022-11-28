@@ -45,4 +45,56 @@ class CART extends db_connection{
          // execute query
          return $this->db_query($cartquery);
      }
+
+     function insert_pay_cls($amount, $email){
+      $sql = "INSERT INTO `pay`(`email`,`amount`) VALUES ('$email','$amount')";
+          
+      return $this->db_query($sql);
+   
+    
+      }
+   
+      function insert_payment_cls($amount, $customer_id,$order_id,$currency,$p_date){
+       $sql = "INSERT INTO `payment`( `amt`, `customer_id`, `order_id`, `currency`, `payment_date`) VALUES ('$amount','$customer_id','$order_id','$currency','$p_date')";
+           
+       return $this->db_query($sql);
+    
+     
+       }
+   
+   
+      function insert_order_cls( $customer_id,$invoice_no,$order_date,$order_stat){
+       $sql= "INSERT INTO `orders`( `customer_id`, `invoice_no`, `order_date`, `order_status`) VALUES ('$customer_id','$invoice_no','$order_date','$order_stat')";
+       return $this->db_query($sql);
+       }
+   
+       function get_last_order_cls($invoice){
+       $sql ="SELECT * FROM `orders` WHERE `invoice_no`= '$invoice'";
+       $data =$this->db_fetch_one($sql);
+       return $data;
+       }
+   
+       function select_cart_user_cls($customer_id){
+           $sql = "SELECT * FROM `cart`  WHERE `c_id` = '$customer_id' ";
+         $data =$this->db_fetch_all($sql);
+           return $data;
+           
+       }
+   
+       function insert_order_details_cls($order_id,$product_id,$qty){
+           $sql= "INSERT INTO `orderdetails`(`order_id`, `product_id`, `qty`) VALUES ('$order_id','$product_id','$qty')";
+           return $this->db_query($sql);
+       }
+   
+       function delete_user_from_cart_cls($customer_id){
+           $sql = "DELETE FROM `cart` WHERE `c_id`='$customer_id'";
+           return $this->db_query($sql);
+       }
+
+       function get_user_cls($cid){
+         $sql = "SELECT * FROM customer WHERE customer_id = '$cid' LIMIT 1";
+         $data =$this->db_fetch_one($sql);
+   
+         return $data;
+   }
 }
